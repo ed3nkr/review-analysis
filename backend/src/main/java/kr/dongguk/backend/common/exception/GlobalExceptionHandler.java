@@ -32,4 +32,9 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleExternal(ExternalApiException e) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_GATEWAY, e.getMessage());   // 502
     }
+
+    @ExceptionHandler(ConflictException.class)
+    public ProblemDetail handleConflict(ConflictException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage());   // 409
+    }
 }

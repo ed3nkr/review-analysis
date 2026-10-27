@@ -39,4 +39,10 @@ public class StoreController {
                                 @Valid @RequestBody StoreUpdateRequest req) {
         return storeService.update(currentOwner.id(), storeId, req);
     }
+
+    @DeleteMapping("/{storeId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)   // 204: 성공, 돌려줄 내용 없음
+    public void delete(@PathVariable Long storeId) {
+        storeService.delete(currentOwner.id(), storeId);
+    }
 }
