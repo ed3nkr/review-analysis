@@ -1,0 +1,24 @@
+# Java / Gradle
+backend/build/
+backend/.gradle/
+*.class
+
+# 업로드된 CSV
+backend/uploads/
+
+# Python
+analysis/.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 비밀값 (API 키 등)
+.env
