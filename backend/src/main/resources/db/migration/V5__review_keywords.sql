@@ -1,0 +1,1 @@
+ALTER TABLE review ADD COLUMN keywords TEXT[] NOT NULL DEFAULT '{}';

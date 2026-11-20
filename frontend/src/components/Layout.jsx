@@ -4,10 +4,10 @@ import { useStores } from '../StoreContext'
 
 const NAV = [
   { to: '/stores', label: '매장', icon: Store, ready: true },
-  { to: '/menus', label: '메뉴', icon: Utensils, ready: false },
-  { to: '/sales', label: '매출', icon: Receipt, ready: false },
-  { to: '/reviews', label: '리뷰', icon: MessageSquare, ready: false },
-  { to: '/report', label: '리포트', icon: FileText, ready: false },
+  { to: '/sales', label: '매출', icon: Receipt, ready: true },
+  { to: '/menus', label: '메뉴', icon: Utensils, ready: true },
+  { to: '/reviews', label: '리뷰', icon: MessageSquare, ready: true },
+  { to: '/report', label: '리포트', icon: FileText, ready: true },
 ]
 
 export default function Layout({ children }) {
@@ -22,7 +22,7 @@ export default function Layout({ children }) {
           <span className="brand-symbol" aria-hidden="true">
             <Store size={22} />
           </span>
-          <span className="brand-name">리뷰와 매출</span>
+          <span className="brand-name">장사어때</span>
         </Link>
         <span className="account">개발용 계정으로 접속 중</span>
       </header>

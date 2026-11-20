@@ -3,3 +3,7 @@ uvicorn[standard]
 pandas
 numpy
 scipy
+psycopg[binary]
+transformers
+# torch 는 따로 (CPU 버전, 용량 작음):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu

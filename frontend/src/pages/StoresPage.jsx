@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { ArrowRight, CloudAlert, Plus, Store } from 'lucide-react'
+import { api } from '../api'
 import { Badge, Button, DetailRow, StateBlock } from '../components/ui'
 import { useStores } from '../StoreContext'
 
@@ -40,18 +42,32 @@ function CurrentStoreCard({ store }) {
 }
 
 // 아직 없는 기능은 '준비 중'으로 그대로 보여 준다
-function prepSteps(store) {
+function prepSteps(store, hasSales, hasReviews) {
   return [
     { label: '매장 정보', done: Boolean(store.address) },
+    { label: '매출 올리기', done: hasSales },
     { label: '메뉴 정리', done: false },
-    { label: '매출 올리기', done: false },
-    { label: '리뷰 모으기', done: Boolean(store.placeId) },
+    { label: '리뷰 모으기', done: hasReviews },
     { label: '리포트', done: false },
   ]
 }
 
 function PreparationCard({ store }) {
-  const steps = prepSteps(store)
+  const [hasSales, setHasSales] = useState(false)
+  const [hasReviews, setHasReviews] = useState(false)
+  useEffect(() => {
+    setHasSales(false)
+    setHasReviews(false)
+    api
+      .getSalesSummary(store.id)
+      .then((s) => setHasSales(s.lineCount > 0))
+      .catch(() => setHasSales(false))
+    api
+      .getReviewSummary(store.id)
+      .then((s) => setHasReviews(s.reviewCount > 0))
+      .catch(() => setHasReviews(false))
+  }, [store.id])
+  const steps = prepSteps(store, hasSales, hasReviews)
   return (
     <section className="card card-prep">
       <h2 className="card-title">분석 준비 순서</h2>

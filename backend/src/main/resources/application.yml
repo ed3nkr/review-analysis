@@ -1,8 +1,25 @@
+review:
+  collector:
+    mode: dummy            # dummy = 시연용 파일 / crawler = 실제 네이버 수집
+    dummy-file: ../crawler/dummy/hongdae_reviews.csv
+    python: ../crawler/.venv/Scripts/python.exe
+    script: ../crawler/naver_reviews.py
+    timeout-seconds: 180
+
+analysis:
+  server-url: http://localhost:8000
+  timeout-seconds: 300
+
 spring:
   config:
     import: optional:file:.env[.properties]
   application:
     name: backend
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB  
 
   datasource:
     url: jdbc:postgresql://localhost:5432/review_analysis

@@ -8,6 +8,7 @@ backend/uploads/
 
 # Python
 analysis/.venv/
+analysis/models/
 __pycache__/
 *.pyc
 

@@ -1,0 +1,1 @@
+ALTER TABLE menu ADD COLUMN discontinued BOOLEAN NOT NULL DEFAULT false;
